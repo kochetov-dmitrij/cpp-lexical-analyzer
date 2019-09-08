@@ -1,5 +1,4 @@
 #include <iostream>
-#include <map>
 #include <string>
 #include <regex>
 
@@ -19,9 +18,6 @@ std::string find_next_token(std::string input_string) {
 
 int main()
 {
-  std::cout << "\n             ===  C++ LEXICAL ANALYZER  ===\n\nWrite the source code of a c++ programm. Press Ctrl+D to confirm.\n\n";
-  std::string input_string(std::istreambuf_iterator<char>(std::cin), {});
-
   regex_tokens.push_back(t_regex_pair("keywords", "^\\s*(alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|class|const|constexpr|const_cast|continue|"
     "decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|float|for|friend|goto|if|inline|int|long|mutable|namespace|new|noexcept|"
     "operator|private|protected|public|register|reinterpret_cast|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|"
@@ -40,5 +36,7 @@ int main()
   regex_tokens.push_back(t_regex_pair("character literals", "^\\s*((?:u8|u|U|L)?'(?:[^'\\\\\\n]|\\\\['\"?\\\\abfnrtv]|\\\\[0-8]{1,3}|\\\\x[0-9A-Fa-f]+)')(?![a-zA-Z0-9_])([\\s\\S]*)"));
   regex_tokens.push_back(t_regex_pair("string literals", "^\\s*((?:u8|u|U|L)?\"(?:[^\"\\\\\\n]|\\\\['\"?\\\\abfnrtv]|\\\\[0-8]{1,3}|\\\\x[0-9A-Fa-f]+)*\")(?![a-zA-Z0-9_])([\\s\\S]*)"));
 
+  std::cout << "\n             ===  C++ LEXICAL ANALYZER  ===\n\nWrite the source code of a c++ programm. Press Ctrl+D to confirm.\n\n";
+  std::string input_string(std::istreambuf_iterator<char>(std::cin), {});
   while(!(input_string = find_next_token(input_string)).empty()) {}
 }
